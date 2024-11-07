@@ -49,7 +49,7 @@ export const CustomButton = ({
   >
     {IconLeft && <IconLeft />}
     <Text
-      className={`text-lg font-JakartaBold ${getTextVariantStyle(textVariant)}`}
+      className={`text-base font-JakartaBold  ${getTextVariantStyle(textVariant)}`}
     >
       {title}
     </Text>
