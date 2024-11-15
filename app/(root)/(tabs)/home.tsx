@@ -4,7 +4,7 @@ import RideCard from "@/components/RideCard";
 import { icons, images } from "@/constants";
 import { userLocationStore } from "@/store";
 import { SignedIn, SignedOut, useUser } from "@clerk/clerk-expo";
-import { Link } from "expo-router";
+import { Link, router } from "expo-router";
 import { useEffect, useState } from "react";
 import {
   ActivityIndicator,
@@ -132,7 +132,15 @@ export default function Page() {
   const [hasLocationPermission, sethasLocationPermission] = useState(false);
 
   const handleSignOut = () => {};
-  const handleDestinationPress = () => {};
+  const handleDestinationPress = (location: {
+    latitude: number;
+    longitude: number;
+    address: string;
+  }) => {
+    setDestinationLocation(location);
+
+    router.push("/(root)/FindRide");
+  };
 
   useEffect(() => {
     const requestLocation = async () => {
@@ -150,10 +158,10 @@ export default function Page() {
       });
 
       setUserLocation({
-        // latitude: location.coords?.latitude,
-        // longitude: location.coords?.longitude,
-        latitude: 28.5355,
-        longitude: 77.391,
+        latitude: location.coords?.latitude,
+        longitude: location.coords?.longitude,
+        // latitude: 28.5355,
+        // longitude: 77.391,
         address: `${address[0].name},${address[0].region}`,
       });
     };
