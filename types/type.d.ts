@@ -133,7 +133,7 @@ declare interface DriverStore {
 }
 
 declare interface DriverCardProps {
-  item: MarkerData;
-  selected: number;
-  setSelected: () => void;
+  item: MarkerData; // Ensure 'MarkerData' is correctly structured
+  selected: number; // Represents the selected driver's ID
+  setSelected: (id: number) => void; // Function to set the selected driver's ID
 }
